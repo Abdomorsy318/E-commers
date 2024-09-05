@@ -3,6 +3,7 @@ import { CartService } from '../../core/services/cart.service';
 import { Icart } from '../../core/interfaces/icart';
 import { CurrencyPipe, NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +14,7 @@ import { RouterLink } from '@angular/router';
 })
 export class CartComponent implements OnInit{
   private readonly _CartService = inject(CartService)
+  private readonly _ToastrService = inject(ToastrService)
   productsOfCart:Icart = {} as Icart
   numberOfItems:number = 0
   moveItems:boolean = false
@@ -65,6 +67,7 @@ export class CartComponent implements OnInit{
         this.numberOfItems = 0
         this.moveItems = false
         this._CartService.numberOfProducts.next(0)
+        this._ToastrService.success('It has been successfully Clear 🛺');
        }
       }
     })

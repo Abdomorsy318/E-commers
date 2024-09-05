@@ -93,6 +93,7 @@ export class DetailsComponent implements OnInit , OnDestroy{
           console.log(res.data)
           this.wishListCart = res.data
           this.loadingAdd = false
+          this._ToastrService.success('It has been successfully Delete item from wishList')
         }
       })
     }
