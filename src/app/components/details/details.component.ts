@@ -102,24 +102,12 @@ export class DetailsComponent implements OnInit , OnDestroy{
       this._WishlistService.addToWishList(id).subscribe({
       next:(res)=>{
         console.log(res.data)
-        this.heartColor=res.data
+        this.wishListCart=res.data
         this.loadingAdd = false
         this._ToastrService.success('It has been successfully added to wishList 💗')
       }
     })
-
-
-    this.loadingAdd = true
-      this._WishlistService.addToWishList(id).subscribe({
-        next:(res)=>{
-          console.log(res.data)
-          this.heartColor=res.data
-          this.loadingAdd = false
-          this._ToastrService.success('It has been successfully added to wishList 💗')
-        }
-      })
-
-    } 
+  } 
     
   }
 

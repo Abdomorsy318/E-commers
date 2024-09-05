@@ -36,9 +36,7 @@
         }
         <span
           [ngClass]="{
-            red:
-              heartColor.includes(detailsProduct.id) ||
-              wishListCart.includes(detailsProduct.id)
+            red: wishListCart.includes(detailsProduct.id)
           }"
           (click)="addToWishList(detailsProduct.id)"
           class="cr d-block my-3 ms-2"
