@@ -1,3 +1,8 @@
+@if (loading) {
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <span [ngClass]="{ loader: loading }"></span>
+</div>
+} @else {
 <section class="container bg-main-light rounded-4 shadow p-5 my-5">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h2 fw-bold">Cart Shop</h1>
@@ -73,3 +78,4 @@
     Clear Your Cart
   </button>
 </section>
+}

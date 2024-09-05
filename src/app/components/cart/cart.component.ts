@@ -16,9 +16,12 @@ export class CartComponent implements OnInit{
   productsOfCart:Icart = {} as Icart
   numberOfItems:number = 0
   moveItems:boolean = false
+  loading:boolean = false
   ngOnInit(): void {
+    this.loading=true
       this._CartService.getProductsCart().subscribe({
         next:(res)=>{
+          this.loading=false
           console.log(res.data)
           this.numberOfItems = res.data.products.length
           this._CartService.numberOfProducts.next(this.numberOfItems)

@@ -18,10 +18,13 @@ export class WishListComponent implements OnInit{
   private readonly _ToastrService = inject(ToastrService)
   wishListCart:Iwishlist[] = []
   loadingAdd: boolean = false;
+  loading:boolean = false
   ID:string = ''
   ngOnInit(): void {
+    this.loading=true
       this._WishlistService.getLoggedWishList().subscribe({
         next:(res)=>{
+          this.loading=false
           this.wishListCart = res.data
         }
       })
