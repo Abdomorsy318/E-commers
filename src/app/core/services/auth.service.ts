@@ -14,6 +14,7 @@ export class AuthService {
   private readonly _Router = inject(Router);
 
   userData:any = null
+  idUser!:string
 
   setRegisterForm(data:object):Observable<any>{
     return this._HttpClient.post(`${environment.baseUrl}/api/v1/auth/signup` , data)
@@ -23,12 +24,13 @@ export class AuthService {
     return this._HttpClient.post(`${environment.baseUrl}/api/v1/auth/signin` , data)
   }
 
-  saveUserData():void{
+  saveUserData():string{
     if(localStorage.getItem('userToken') !== null)
     {
       this.userData = jwtDecode(localStorage.getItem('userToken')!)
-      console.log(this.userData)
+      return this.userData.id
     }
+    return ''
   }
 
   signOut():void{
