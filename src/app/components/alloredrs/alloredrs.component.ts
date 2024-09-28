@@ -14,13 +14,12 @@ export class AlloredrsComponent implements OnInit{
   private readonly _OrdersService = inject(OrdersService)
   private readonly _AuthService = inject(AuthService)
   idUser:string = this._AuthService.saveUserData()
-  // ordersList:Iorders[] = []
   orderList:Iorders[] = []
   order!:number
   ngOnInit(): void {
       this._OrdersService.getUserOrders(this.idUser).subscribe({
         next:(res)=>{
-          this.orderList = res[res.length - 2].cartItems
+          this.orderList = res[res.length - 1].cartItems
           console.log(this.orderList)
         },
         error:(err)=>{
